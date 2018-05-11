@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Controller.MainActivity">
+
+    <TextView
+        android:id="@+id/activity_game_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#ff00"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:padding="60dp"
+        android:text="Question ?" />
+
+    <Button
+        android:id="@+id/activity_game_answer_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#9999"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="ANSWER1"/>
+
+    <Button
+        android:id="@+id/activity_game_answer_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#9999"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="ANSWER2"/>
+
+    <Button
+        android:id="@+id/activity_game_answer_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#9999"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="ANSWER3"/>
+
+    <Button
+        android:id="@+id/activity_game_answer_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#9999"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="ANSWER4"/>
+
+</LinearLayout>
