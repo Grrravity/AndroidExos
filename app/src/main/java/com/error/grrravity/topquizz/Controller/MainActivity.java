@@ -16,7 +16,7 @@ import com.error.grrravity.topquizz.R;
 
 import static java.lang.System.out;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
     private TextView mGreetingText;
     private EditText mNameImput;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
 
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
-    public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
+    public static final String PREF_KEY_FIRST_NAME = "PREF_KEY_FIRST_NAME";
 
 
     @Override
@@ -35,48 +35,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         System.out.println("MainActivity::onCreate");
+
         mUser = new User();
 
         mPreferences = getPreferences(MODE_PRIVATE);
 
-        mGreetingText = findViewById(R.id.activity_main_greeting_txt);
-        mNameImput = findViewById(R.id.activity_main_name_input);
-        mPlayButton = findViewById(R.id.activity_main_play_btn);
+        initVars();
+
+        initView();
+
+        initListener();
+
+    }
+
+    private void initListener() {
+        mNameImput.addTextChangedListener(this);
+
+        mPlayButton.setOnClickListener(this);
+    }
+
+    private void initView() {
 
         mPlayButton.setEnabled(false);
 
         greetUser();
 
-        mNameImput.addTextChangedListener(new TextWatcher() {
+    }
 
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    mPlayButton.setEnabled(s.toString().length() != 0);
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-        mPlayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mUser.setFirstName(mNameImput.getText().toString());
-                mPreferences.edit().putString(PREF_KEY_FIRSTNAME, mUser.getFirstName()).apply();
-                Intent gameActivityIntent = new Intent(MainActivity.this,
-                        GameActivity.class);
-                startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
-
-            }
-        });
-
+    private void initVars() {
+        mGreetingText = findViewById(R.id.activity_main_greeting_txt);
+        mNameImput = findViewById(R.id.activity_main_name_input);
+        mPlayButton = findViewById(R.id.activity_main_play_btn);
     }
 
     @Override
@@ -91,13 +80,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void greetUser() {
-        String firstname = mPreferences.getString(PREF_KEY_FIRSTNAME, null);
+        String firstname = mPreferences.getString(PREF_KEY_FIRST_NAME, null);
 
         if (firstname != null){
             int score = mPreferences.getInt(PREF_KEY_SCORE, 0);
 
-            String fulltext = "Welcome back " + firstname + "!\n Your last score was " + score +
-                    ", will you do better this time?";
+            String fulltext = getString(R.string.greet_on_restart) + firstname + getString(R.string.last_score) + score + getString(R.string.do_better);
             mGreetingText.setText(fulltext);
             mNameImput.setText(firstname);
             mNameImput.setSelection(firstname.length());
@@ -137,5 +125,36 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
         out.println("MainActivity::onDestroy()");
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mPlayButton.setEnabled(s.toString().length() != 0);
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            case R.id.activity_main_play_btn:
+                mUser.setFirstName(mNameImput.getText().toString());
+                mPreferences.edit().putString(PREF_KEY_FIRST_NAME, mUser.getFirstName()).apply();
+                Intent gameActivityIntent = new Intent(MainActivity.this,
+                        GameActivity.class);
+                startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
+                break;
+        }
+
     }
 }

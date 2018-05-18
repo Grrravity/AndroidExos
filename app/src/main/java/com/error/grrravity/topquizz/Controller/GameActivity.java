@@ -30,7 +30,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private int mScore;
     private int mNumberOfQuestions;
-    public static final String BUNDLE_EXTRA_SCORE = "(BUNDLE_EXTRA_SCORE";
+    public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
     public static final String BUNDLE_STATE_SCORE = "currentScore";
     public static final String BUNDLE_STATE_QUESTION = "currentQuestion";
 
@@ -89,11 +89,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int responseIndex = (int) v.getTag();
         if (responseIndex == mCurrentQuestion.getAnswerIndex()){
             //Good
-            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.correct), Toast.LENGTH_SHORT).show();
             mScore++;
         }
         else {
-            Toast.makeText(this,"Wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.wrong), Toast.LENGTH_SHORT).show();
             //Wrong
         }
         mEnableTouchEvents = false;
@@ -120,9 +120,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void endGame() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Well done !")
-                .setMessage("Your score is " + mScore)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.wd))
+                .setMessage(getString(R.string.score_is) + mScore)
+                .setPositiveButton(getString(R.string.ok_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //End the activity
@@ -144,42 +144,62 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswer4.setText(question.getChoiceList().get(3));
     }
 
+
     private QuestionBank generateQuestions(){
-        Question question1 = new Question("What is the name of the current french president?",
-                Arrays.asList("François Hollande", "Emmanuel Macron", "Jacques Chirac", "François Mitterand"),
-                1);
 
-        Question question2 = new Question("How many countries are there in the European Union?",
-                Arrays.asList("15", "24", "28", "32"),
-                2);
+        Question question1 = new Question(getString(R.string.french_president_name),
+                Arrays.asList(getString(R.string.president_answer_0),
+                        getString(R.string.president_answer_1),
+                        getString(R.string.president_answer_2),
+                        getString(R.string.president_answer_3)), 1);
 
-        Question question3 = new Question("Who is the creator of the Android operating system?",
-                Arrays.asList("Andy Rubin", "Steve Wozniak", "Jake Wharton", "Paul Smith"),
-                0);
+        Question question2 = new Question(getString(R.string.european_union_number),
+                Arrays.asList(getString(R.string.EU_number_answer_0),
+                        getString(R.string.EU_number_answer_1),
+                        getString(R.string.EU_number_answer_2),
+                        getString(R.string.EU_number_answer_3)), 2);
 
-        Question question4 = new Question("When did the first man land on the moon?",
-                Arrays.asList("1958", "1962", "1967", "1969"),
-                3);
+        Question question3 = new Question(getString(R.string.android_OS_System_Creator),
+                Arrays.asList(getString(R.string.android_OS_answer_0),
+                        getString(R.string.android_OS_answer_1),
+                        getString(R.string.android_OS_answer_2),
+                        getString(R.string.android_OS_answer_3)), 0);
 
-        Question question5 = new Question("What is the capital of Romania?",
-                Arrays.asList("Bucarest", "Warsaw", "Budapest", "Berlin"),
-                0);
+        Question question4 = new Question(getString(R.string.moon_landing_year),
+                Arrays.asList(getString(R.string.moon_landing_answer_0)
+                        ,getString(R.string.moon_landing_answer_1)
+                        ,getString(R.string.moon_landing_answer_2)
+                        ,getString(R.string.moon_landing_answer_3)), 3);
 
-        Question question6 = new Question("Who did the Mona Lisa paint?",
-                Arrays.asList("Michelangelo", "Leonardo Da Vinci", "Raphael", "Carravagio"),
-                1);
+        Question question5 = new Question(getString(R.string.romania_capital),
+                Arrays.asList(getString(R.string.romania_capital_answer_0)
+                        ,getString(R.string.romania_capital_answer_1)
+                        ,getString(R.string.romania_capital_answer_2)
+                        ,getString(R.string.romania_capital_answer_3)), 0);
 
-        Question question7 = new Question("In which city is the composer Frédéric Chopin buried?",
-                Arrays.asList("Strasbourg", "Warsaw", "Paris", "Moscow"),
-                2);
+        Question question6 = new Question(getString(R.string.mona_lisa_painter),
+                Arrays.asList(getString(R.string.mona_lisa_painter_answer_0)
+                        ,getString(R.string.mona_lisa_painter_answer_1)
+                        ,getString(R.string.mona_lisa_painter_answer_2)
+                        ,getString(R.string.mona_lisa_painter_answer_3)), 1);
 
-        Question question8 = new Question("What is the country top-level domain of Belgium?",
-                Arrays.asList(".bg", ".bm", ".bl", ".be"),
-                3);
+        Question question7 = new Question(getString(R.string.chopin_buried),
+                Arrays.asList(getString(R.string.chopin_buried_answer_0)
+                        ,getString(R.string.chopin_buried_answer_1)
+                        ,getString(R.string.chopin_buried_answer_2)
+                        ,getString(R.string.chopin_buried_answer_3)), 2);
 
-        Question question9 = new Question("What is the house number of The Simpsons?",
-                Arrays.asList("42", "101", "666", "742"),
-                3);
+        Question question8 = new Question(getString(R.string.belgium_domain),
+                Arrays.asList(getString(R.string.belgium_domain_answer_0)
+                        ,getString(R.string.belgium_domain_answer_1)
+                        ,getString(R.string.belgium_domain_answer_2)
+                        ,getString(R.string.belgium_domain_answer_3)), 3);
+
+        Question question9 = new Question(getString(R.string.simpsons_house),
+                Arrays.asList(getString(R.string.simpsons_house_answer_0)
+                        ,getString(R.string.simpsons_house_answer_1)
+                        ,getString(R.string.simpsons_house_answer_2)
+                        ,getString(R.string.simpsons_house_answer_3)), 3);
 
         return new QuestionBank(Arrays.asList(question1,
                 question2,

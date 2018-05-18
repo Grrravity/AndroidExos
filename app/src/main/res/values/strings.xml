@@ -1,3 +1,61 @@
 <resources>
     <string name="app_name">TopQuizz</string>
+
+    // Main Activity text
+    <string name="greet_on_restart">Welcome back "</string>
+    <string name="last_score"> ! \nYour last score was "</string>
+    <string name="do_better">. Will you do better this time?"</string>
+
+    // Game Activity text
+    <string name="correct">Correct</string>
+    <string name="wrong">Wrong</string>
+    <string name="wd">Well done !</string>
+    <string name="score_is">Your score is </string>
+    <string name="ok_button">OK</string>
+        // Question text
+    <string name="french_president_name">What is the name of the current french president?</string>
+    <string name="president_answer_0">François Hollande</string>
+    <string name="president_answer_1">Emmanuel Macron</string>
+    <string name="president_answer_2">Jacques Chirac</string>
+    <string name="president_answer_3">François Mitterand</string>
+    <string name="european_union_number">How many countries are there in the European Union?</string>
+    <string name="EU_number_answer_0">15</string>
+    <string name="EU_number_answer_1">24</string>
+    <string name="EU_number_answer_2">28</string>
+    <string name="EU_number_answer_3">32</string>
+    <string name="android_OS_System_Creator">Who is the creator of the Android operating system?</string>
+    <string name="android_OS_answer_0">Andy Rubin</string>
+    <string name="android_OS_answer_1">Steve Wozniak</string>
+    <string name="android_OS_answer_2">Jake Wharton</string>
+    <string name="android_OS_answer_3">Paul Smith</string>
+    <string name="moon_landing_year">When did the first man land on the moon?</string>
+    <string name="moon_landing_answer_0">1958</string>
+    <string name="moon_landing_answer_1">1962</string>
+    <string name="moon_landing_answer_2">1967</string>
+    <string name="moon_landing_answer_3">1969</string>
+    <string name="romania_capital">What is the capital of Romania?</string>
+    <string name="romania_capital_answer_0">Bucarest</string>
+    <string name="romania_capital_answer_1">Warsaw</string>
+    <string name="romania_capital_answer_2">Budapest</string>
+    <string name="romania_capital_answer_3">Berlin</string>
+    <string name="mona_lisa_painter">Who did the Mona Lisa paint?</string>
+    <string name="mona_lisa_painter_answer_0">Michelangelo</string>
+    <string name="mona_lisa_painter_answer_1">Leonardo Da Vinci</string>
+    <string name="mona_lisa_painter_answer_2">Raphael</string>
+    <string name="mona_lisa_painter_answer_3">Carravagio</string>
+    <string name="chopin_buried">In which city is the composer Frédéric Chopin buried?</string>
+    <string name="chopin_buried_answer_0">Strasbourg</string>
+    <string name="chopin_buried_answer_1">Warsaw</string>
+    <string name="chopin_buried_answer_2">Paris</string>
+    <string name="chopin_buried_answer_3">Moscow</string>
+    <string name="belgium_domain">What is the country top-level domain of Belgium?</string>
+    <string name="belgium_domain_answer_0">.bg</string>
+    <string name="belgium_domain_answer_1">.bl</string>
+    <string name="belgium_domain_answer_2">.bm</string>
+    <string name="belgium_domain_answer_3">.be</string>
+    <string name="simpsons_house">What is the house number of The Simpsons?</string>
+    <string name="simpsons_house_answer_0">51</string>
+    <string name="simpsons_house_answer_1">101</string>
+    <string name="simpsons_house_answer_2">666</string>
+    <string name="simpsons_house_answer_3">742</string>
 </resources>
