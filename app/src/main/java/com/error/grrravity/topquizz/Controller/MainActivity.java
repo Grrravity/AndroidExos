@@ -2,6 +2,7 @@ package com.error.grrravity.topquizz.Controller;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,9 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.error.grrravity.topquizz.Model.User;
+import com.error.grrravity.topquizz.Model.User2;
 import com.error.grrravity.topquizz.R;
+import com.google.gson.Gson;
 
 import static java.lang.System.out;
 
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     private TextView mGreetingText;
     private EditText mNameImput;
     private Button mPlayButton;
-    private User mUser;
+    private User mUser2;
     public static final int GAME_ACTIVITY_REQUEST_CODE = 42;
     private SharedPreferences mPreferences;
 
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
 
         System.out.println("MainActivity::onCreate");
 
-        mUser = new User();
+        mUser2 = new User();
 
         mPreferences = getPreferences(MODE_PRIVATE);
 
@@ -92,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
             mPlayButton.setEnabled(true);
         }
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -148,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         switch (v.getId()){
 
             case R.id.activity_main_play_btn:
-                mUser.setFirstName(mNameImput.getText().toString());
-                mPreferences.edit().putString(PREF_KEY_FIRST_NAME, mUser.getFirstName()).apply();
+                mUser2.setFirstName(mNameImput.getText().toString());
+                mPreferences.edit().putString(PREF_KEY_FIRST_NAME, mUser2.getFirstName()).apply();
                 Intent gameActivityIntent = new Intent(MainActivity.this,
                         GameActivity.class);
                 startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
